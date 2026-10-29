@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,7 +38,9 @@ public class GameManager : MonoBehaviour
 
     public void NewLevel()
     {
-        spawnPos = 1;
+        StopAllCoroutines();
+        isMoving = false;
+        spawnPos = 0;
         Body.position = new(0, 0.7f, 0);
         foreach (Transform t in terrainHolder)
         {
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnObstacle();
         }
+        Body.position = new Vector3(0.0f, 0.7f, 0.0f);
     }
 
     private void SpawnObstacle()

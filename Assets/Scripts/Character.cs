@@ -4,9 +4,9 @@ public class Character : MonoBehaviour
 {
     [SerializeField] GameManager gm;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider Collider)
     {
-        if(collision.gameObject.tag=="car")
+        if(Collider.gameObject.tag=="car")
         {
             gm.NewLevel();
         }
